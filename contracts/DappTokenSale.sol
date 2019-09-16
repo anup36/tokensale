@@ -10,7 +10,7 @@ contract DappTokenSale {
 
     event Sell(address _buyer, uint256 _amount);
 
-    function DappTokenSale(DappToken _tokenContract, uint256 _tokenPrice) public {
+    constructor(DappToken _tokenContract, uint256 _tokenPrice) public {
         admin = msg.sender;
         tokenContract = _tokenContract;
         tokenPrice = _tokenPrice;
@@ -27,7 +27,7 @@ contract DappTokenSale {
 
         tokensSold += _numberOfTokens;
 
-        Sell(msg.sender, _numberOfTokens);
+        emit Sell(msg.sender, _numberOfTokens);
     }
 
     function endSale() public {
